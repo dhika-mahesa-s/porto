@@ -1,0 +1,7 @@
+# Allow all standard crawlers
+User-agent: *
+Allow: /
+
+# Host & Sitemap specification
+Host: https://dhikamahesa.vercel.app
+Sitemap: https://dhikamahesa.vercel.app/sitemap.xml

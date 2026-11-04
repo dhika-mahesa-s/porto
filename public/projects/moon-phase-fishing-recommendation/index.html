@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moon-Phase Classification & Fishing Recommendation System – Case Study | Dhika Mahesa Syaputra</title>
+  <meta name="description" content="Offline-first Android edge AI app running an 88.32% accurate MobileNetV2 TFLite model combined with real-time ocean data for artisanal fishermen." />
+  <meta name="author" content="Dhika Mahesa Syaputra, S.Kom." />
+  <link rel="canonical" href="https://dhikamahesa.vercel.app/projects/moon-phase-fishing-recommendation" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dhikamahesa.vercel.app/projects/moon-phase-fishing-recommendation" />
+  <meta property="og:title" content="Moon-Phase Classification & Fishing Recommendation System – Case Study | Dhika Mahesa Syaputra" />
+  <meta property="og:description" content="Offline-first Android edge AI app running an 88.32% accurate MobileNetV2 TFLite model combined with real-time ocean data for artisanal fishermen." />
+  <meta property="og:image" content="https://dhikamahesa.vercel.app/img/projects/moon-phase.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://dhikamahesa.vercel.app/projects/moon-phase-fishing-recommendation" />
+  <meta name="twitter:title" content="Moon-Phase Classification & Fishing Recommendation System – Case Study | Dhika Mahesa Syaputra" />
+  <meta name="twitter:description" content="Offline-first Android edge AI app running an 88.32% accurate MobileNetV2 TFLite model combined with real-time ocean data for artisanal fishermen." />
+  <meta name="twitter:image" content="https://dhikamahesa.vercel.app/img/projects/moon-phase.svg" />
+
+  <!-- Theme color & Icons -->
+  <meta name="theme-color" content="#080d1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Dhika Mahesa Syaputra","honorificSuffix":"S.Kom.","jobTitle":"AI Engineer","description":"AI Engineer and Computer Science graduate focused on agentic RAG, computer vision, and AI for public-sector and agriculture data.","url":"https://dhikamahesa.vercel.app","email":"mailto:dhikamahesa45@gmail.com","sameAs":["https://www.linkedin.com/in/dhika-mahesa-syaputra-456748374","https://github.com/dhika-mahesa-s"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Universitas Riau","department":"Department of Computer Science"},"knowsAbout":["Artificial Intelligence","Large Language Models","Retrieval-Augmented Generation","Computer Vision","Deep Learning","YOLOv8","TensorFlow Lite"]}
+  </script>
+
+  <!-- Alpine.js inline initialization for theme and reactivity -->
+  <script>
+    // Immediate theme initialization to prevent flash of wrong theme (FOUC)
+    (function() {
+      try {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+  
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  
+  <header
+    x-data="{
+      mobileMenuOpen: false,
+      theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+      toggleTheme() {
+        this.theme = this.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', this.theme);
+        if (this.theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    }"
+    class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 dark:bg-[#080d1a]/85 border-b border-border-light dark:border-border-dark transition-colors"
+    role="banner"
+  >
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo / Name -->
+      <a href="/#" class="group flex items-center gap-2.5 text-text-primary dark:text-slate-100 font-semibold text-sm sm:text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md py-1">
+        <span class="w-2.5 h-2.5 rounded-full bg-accent group-hover:scale-125 transition-transform duration-200"></span>
+        <span class="font-mono tracking-tight font-bold text-slate-900 dark:text-white">dhika.ai</span>
+        <span class="hidden sm:inline-block text-xs font-mono text-slate-500 dark:text-slate-400">/ portfolio</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-6 text-xs lg:text-sm font-medium text-slate-600 dark:text-slate-300" aria-label="Main navigation">
+        <a href="/#about" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">About</a>
+        <a href="/#skills" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Skills</a>
+        <a href="/#projects" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Projects</a>
+        <a href="/#research" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Research</a>
+        <a href="/#timeline" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Timeline</a>
+        <a href="/#contact" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Contact</a>
+      </nav>
+
+      <!-- Right Actions: GitHub, Theme Toggle & CV Download -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- GitHub Link -->
+        <a
+          href="https://github.com/dhika-mahesa-s"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label="GitHub Profile (opens in new tab)"
+          title="GitHub: github.com/dhika-mahesa-s"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+        </a>
+
+        <!-- Theme Toggle -->
+        <button
+          @click="toggleTheme()"
+          type="button"
+          class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label="Toggle dark/light theme"
+        >
+          <!-- Moon icon for light mode (shows when dark is off) -->
+          <svg x-show="theme === 'light'" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <!-- Sun icon for dark mode (shows when dark is on) -->
+          <svg x-show="theme === 'dark'" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+
+        <!-- Download CV CTA -->
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md border border-accent/40 bg-accent/10 text-emerald-700 dark:text-accent hover:bg-accent hover:text-slate-950 transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          title="Download public CV (PDF)"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>CV.pdf</span>
+        </a>
+
+        <!-- Mobile Drawer Hamburger -->
+        <button
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          type="button"
+          class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          :aria-expanded="mobileMenuOpen"
+          aria-label="Toggle navigation menu"
+        >
+          <svg x-show="!mobileMenuOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="mobileMenuOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay & Menu -->
+    <div
+      x-show="mobileMenuOpen"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-4"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-4"
+      @click.away="mobileMenuOpen = false"
+      class="md:hidden border-b border-border-light dark:border-border-dark bg-white dark:bg-[#0c1324] px-4 pt-2 pb-6 space-y-3"
+      style="display: none;"
+    >
+      <nav class="flex flex-col space-y-2 pt-2 text-sm font-medium text-slate-700 dark:text-slate-200">
+        <a @click="mobileMenuOpen = false" href="/#about" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">About</a>
+        <a @click="mobileMenuOpen = false" href="/#skills" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Skills</a>
+        <a @click="mobileMenuOpen = false" href="/#projects" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Projects</a>
+        <a @click="mobileMenuOpen = false" href="/#research" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Research</a>
+        <a @click="mobileMenuOpen = false" href="/#timeline" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Timeline</a>
+        <a @click="mobileMenuOpen = false" href="/#certifications" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Certifications</a>
+        <a @click="mobileMenuOpen = false" href="/#contact" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Contact</a>
+        <a href="https://github.com/dhika-mahesa-s" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>GitHub: dhika-mahesa-s</span>
+        </a>
+        <div class="pt-2">
+          <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-md bg-accent text-slate-950 font-medium text-sm">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download CV (PDF)</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+
+  <main id="main-content" class="py-12 md:py-20">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <!-- Top Breadcrumbs & Back Button -->
+      <div class="flex items-center justify-between">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-2">
+          <a href="/" class="hover:text-accent transition-colors">Home</a>
+          <span>/</span>
+          <a href="/#projects" class="hover:text-accent transition-colors">Projects</a>
+          <span>/</span>
+          <span class="text-slate-900 dark:text-slate-200 font-semibold">Moon-Phase Classification & Fishing Recommendation System</span>
+        </nav>
+
+        <a
+          href="/#projects"
+          class="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+          <span>Back to Projects</span>
+        </a>
+      </div>
+
+      <!-- Project Header -->
+      <header class="space-y-4 max-w-3xl">
+        <div class="inline-flex items-center px-3 py-1 rounded-md text-xs font-mono bg-accent/10 text-emerald-800 dark:text-accent border border-accent/30">
+          Mobile • Undergraduate thesis, Universitas Riau
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Moon-Phase Classification & Fishing Recommendation System
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+          Offline-first Android edge AI app running an 88.32% accurate MobileNetV2 TFLite model combined with real-time ocean data for artisanal fishermen.
+        </p>
+
+        <!-- Tech Tags -->
+        <div class="flex flex-wrap gap-2 pt-2">
+          
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              MobileNetV2 (transfer learning)
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              TensorFlow
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              TensorFlow Lite
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              Android (Java, MVVM, Room, SQLite)
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              REST API integration
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+              model evaluation (precision, recall, mAP, F1, cross-validation)
+            </span>
+        </div>
+      </header>
+
+      <!-- Architecture Diagram / Visual Slot -->
+      <div class="tech-card overflow-hidden">
+        <div class="w-full aspect-[16/9] bg-slate-900 relative">
+          <img
+            src="/img/projects/moon-phase.svg"
+            alt="Moon-phase classification Android application interface and inference benchmark"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Detail Deep Dive Sections: Problem, Approach, Results, What Was Learned -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- Main Deep Dive Content -->
+        <div class="lg:col-span-8 space-y-10">
+          <!-- 1. Problem Statement -->
+          <section class="space-y-3">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="font-mono text-accent text-sm">01.</span>
+              <span>The Problem &amp; Operational Context</span>
+            </h2>
+            <div class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p>Lunar cycles dictate ocean tidal movements and fish feeding behaviors. Coastal fishermen in Indonesia traditionally rely on intuition, which is vulnerable to unpredictable weather patterns.</p><p>Existing mobile weather apps require continuous high-speed cellular data, rendering them useless offshore.</p>
+            </div>
+          </section>
+
+          <!-- 2. Technical Approach -->
+          <section class="space-y-3">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="font-mono text-accent text-sm">02.</span>
+              <span>Engineering Approach &amp; Implementation</span>
+            </h2>
+            <div class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p>Executed a 3-phase progressive transfer learning protocol on ImageNet-pretrained MobileNetV2: feature extractor freeze, intermediate block fine-tuning, and full top-layer adaptation.</p><p>Quantized the resulting TensorFlow model into TensorFlow Lite format, slashing footprint from 22 MB to 5 MB for rapid mobile loading.</p><p>Developed a native Android application using Java, MVVM architecture, Room, and SQLite local storage for an offline-first experience.</p><p>Created a rule-based recommendation engine yielding 5 distinct advisory tiers by fusing on-device moon-phase predictions with cached ocean weather feeds from the Stormglass API.</p>
+            </div>
+          </section>
+
+          <!-- 3. Results Analysis -->
+          <section class="space-y-3">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="font-mono text-accent text-sm">03.</span>
+              <span>Empirical Results &amp; Verification</span>
+            </h2>
+            <div class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p>Achieved 88.32% test accuracy on 291 strictly held-out real-world moon images across 8 lunar phases.</p><p>Recorded 100–200 ms inference execution times on budget Android hardware without network roundtrips.</p><p>Authored research manuscript currently under peer review at the Scopus-indexed Indonesian Journal of Electrical Engineering and Informatics (IJEEI, Q3).</p>
+            </div>
+          </section>
+
+          <!-- 4. What Was Learned -->
+          <section class="space-y-3">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="font-mono text-accent text-sm">04.</span>
+              <span>Key Learnings &amp; Production Insights</span>
+            </h2>
+            <div class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p>Progressive multi-stage fine-tuning avoids catastrophic forgetting when adapting deep vision networks to celestial and astronomical datasets.</p><p>Combining on-device ML with local SQLite caching delivers continuous utility in mission-critical edge environments.</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Sidebar Summary & Links -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="tech-card p-6 space-y-5">
+            <h3 class="text-xs font-mono font-semibold uppercase text-accent tracking-wider border-b border-border-light dark:border-border-dark pb-2">
+              System Specifications
+            </h3>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div>
+                <span class="text-slate-400 font-mono text-xs block">Category</span>
+                <span class="font-medium text-slate-900 dark:text-white">Mobile</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 font-mono text-xs block">Context / Program</span>
+                <span class="font-medium text-slate-900 dark:text-white">Undergraduate thesis, Universitas Riau</span>
+              </div>
+
+              <div>
+                <span class="text-slate-400 font-mono text-xs block">Validated Metrics</span>
+                <ul class="mt-1 space-y-1 text-slate-700 dark:text-slate-200 text-xs">
+                  
+                    <li class="flex items-start gap-1.5">
+                      <span class="text-accent flex-shrink-0">✓</span>
+                      <span>88.32% test accuracy on 8-class moon-phase classification across 291 held-out test images</span>
+                    </li>
+                    <li class="flex items-start gap-1.5">
+                      <span class="text-accent flex-shrink-0">✓</span>
+                      <span>77% model compression (from 22 MB down to 5 MB) via TensorFlow Lite optimization</span>
+                    </li>
+                    <li class="flex items-start gap-1.5">
+                      <span class="text-accent flex-shrink-0">✓</span>
+                      <span>100–200 ms on-device inference latency per image on mobile CPU</span>
+                    </li>
+                    <li class="flex items-start gap-1.5">
+                      <span class="text-accent flex-shrink-0">✓</span>
+                      <span>Manuscript under review at Indonesian Journal of Electrical Engineering and Informatics (IJEEI, Scopus-indexed Q3)</span>
+                    </li>
+                </ul>
+              </div>
+
+              <div class="pt-3 border-t border-border-light dark:border-border-dark">
+                <span class="text-slate-400 font-mono text-xs block mb-1">External Links</span>
+                <div class="space-y-1 font-mono text-xs">
+                  <div>GitHub: <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></div>
+                  <div>Demo: <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://github.com/dhika-mahesa-s" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>GitHub: dhika-mahesa-s</span>
+        </a>
+        <div class="pt-2">
+              <a
+                href="/#contact"
+                class="w-full inline-flex items-center justify-center py-2.5 rounded-lg bg-accent text-slate-950 font-semibold text-xs hover:bg-emerald-400 transition-colors"
+              >
+                Inquire about this architecture →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer class="py-12 bg-white dark:bg-[#070b16] border-t border-border-light dark:border-border-dark text-xs font-mono text-slate-500 dark:text-slate-400" role="contentinfo">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-1 text-center sm:text-left">
+        <div>© 2026 Dhika Mahesa Syaputra, S.Kom.. All rights reserved.</div>
+        <div class="text-[11px] text-slate-400 dark:text-slate-500">
+          Zero tracking cookies • Built with HTML5, Tailwind CSS &amp; Alpine.js
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/dhika-mahesa-s" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors flex items-center gap-1.5" title="GitHub">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/dhika-mahesa-syaputra-456748374" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors flex items-center gap-1.5" title="LinkedIn">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="#main-content" class="hover:text-accent transition-colors flex items-center gap-1">
+          <span>Back to top</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

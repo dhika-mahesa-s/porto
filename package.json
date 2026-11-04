@@ -1,0 +1,40 @@
+{
+  "name": "dhika-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio for Dhika Mahesa Syaputra, S.Kom. - AI Engineer",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx scripts/dev.ts",
+    "build:pages": "tsx scripts/generate-pages.ts",
+    "build:css": "tailwindcss -i ./src/styles/main.css -o ./public/css/main.css --minify",
+    "build:cv": "tsx scripts/generate-cv.ts",
+    "build:seo": "tsx scripts/generate-seo.ts",
+    "build": "npm run build:pages && npm run build:css && npm run build:cv && npm run build:seo",
+    "lint": "eslint . --ext .ts,.js",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"**/*.{ts,js,html,css,json,md}\""
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.8",
+    "resend": "^4.1.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/alpinejs": "^3.13.11",
+    "@types/node": "^22.13.9",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "autoprefixer": "^10.4.20",
+    "browser-sync": "^3.0.4",
+    "eslint": "^9.21.0",
+    "pdf-lib": "^1.17.1",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "sitemap": "^8.0.0",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhika Mahesa Syaputra, S.Kom. – AI Engineer Portfolio</title>
+  <meta name="description" content="Personal portfolio of Dhika Mahesa Syaputra, S.Kom., AI Engineer specializing in LLM applications, agentic RAG, and computer vision systems." />
+  <meta name="author" content="Dhika Mahesa Syaputra, S.Kom." />
+  <link rel="canonical" href="https://dhikamahesa.vercel.app" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dhikamahesa.vercel.app" />
+  <meta property="og:title" content="Dhika Mahesa Syaputra, S.Kom. – AI Engineer Portfolio" />
+  <meta property="og:description" content="Personal portfolio of Dhika Mahesa Syaputra, S.Kom., AI Engineer specializing in LLM applications, agentic RAG, and computer vision systems." />
+  <meta property="og:image" content="https://dhikamahesa.vercel.app/og-image.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://dhikamahesa.vercel.app" />
+  <meta name="twitter:title" content="Dhika Mahesa Syaputra, S.Kom. – AI Engineer Portfolio" />
+  <meta name="twitter:description" content="Personal portfolio of Dhika Mahesa Syaputra, S.Kom., AI Engineer specializing in LLM applications, agentic RAG, and computer vision systems." />
+  <meta name="twitter:image" content="https://dhikamahesa.vercel.app/og-image.svg" />
+
+  <!-- Theme color & Icons -->
+  <meta name="theme-color" content="#080d1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Dhika Mahesa Syaputra","honorificSuffix":"S.Kom.","jobTitle":"AI Engineer","description":"AI Engineer and Computer Science graduate focused on agentic RAG, computer vision, and AI for public-sector and agriculture data.","url":"https://dhikamahesa.vercel.app","email":"mailto:dhikamahesa45@gmail.com","sameAs":["https://www.linkedin.com/in/dhika-mahesa-syaputra-456748374","https://github.com/dhika-mahesa-s"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Universitas Riau","department":"Department of Computer Science"},"knowsAbout":["Artificial Intelligence","Large Language Models","Retrieval-Augmented Generation","Computer Vision","Deep Learning","YOLOv8","TensorFlow Lite"]}
+  </script>
+
+  <!-- Alpine.js inline initialization for theme and reactivity -->
+  <script>
+    // Immediate theme initialization to prevent flash of wrong theme (FOUC)
+    (function() {
+      try {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+  
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  
+  <header
+    x-data="{
+      mobileMenuOpen: false,
+      theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+      toggleTheme() {
+        this.theme = this.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', this.theme);
+        if (this.theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    }"
+    class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 dark:bg-[#080d1a]/85 border-b border-border-light dark:border-border-dark transition-colors"
+    role="banner"
+  >
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo / Name -->
+      <a href="#" class="group flex items-center gap-2.5 text-text-primary dark:text-slate-100 font-semibold text-sm sm:text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md py-1">
+        <span class="w-2.5 h-2.5 rounded-full bg-accent group-hover:scale-125 transition-transform duration-200"></span>
+        <span class="font-mono tracking-tight font-bold text-slate-900 dark:text-white">dhika.ai</span>
+        <span class="hidden sm:inline-block text-xs font-mono text-slate-500 dark:text-slate-400">/ portfolio</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-6 text-xs lg:text-sm font-medium text-slate-600 dark:text-slate-300" aria-label="Main navigation">
+        <a href="#about" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">About</a>
+        <a href="#skills" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Skills</a>
+        <a href="#projects" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Projects</a>
+        <a href="#research" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Research</a>
+        <a href="#timeline" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Timeline</a>
+        <a href="#contact" class="hover:text-accent transition-colors py-1 focus-visible:ring-1 focus-visible:ring-accent rounded">Contact</a>
+      </nav>
+
+      <!-- Right Actions: GitHub, Theme Toggle & CV Download -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- GitHub Link -->
+        <a
+          href="https://github.com/dhika-mahesa-s"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label="GitHub Profile (opens in new tab)"
+          title="GitHub: github.com/dhika-mahesa-s"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+        </a>
+
+        <!-- Theme Toggle -->
+        <button
+          @click="toggleTheme()"
+          type="button"
+          class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label="Toggle dark/light theme"
+        >
+          <!-- Moon icon for light mode (shows when dark is off) -->
+          <svg x-show="theme === 'light'" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <!-- Sun icon for dark mode (shows when dark is on) -->
+          <svg x-show="theme === 'dark'" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+
+        <!-- Download CV CTA -->
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md border border-accent/40 bg-accent/10 text-emerald-700 dark:text-accent hover:bg-accent hover:text-slate-950 transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          title="Download public CV (PDF)"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span>CV.pdf</span>
+        </a>
+
+        <!-- Mobile Drawer Hamburger -->
+        <button
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          type="button"
+          class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          :aria-expanded="mobileMenuOpen"
+          aria-label="Toggle navigation menu"
+        >
+          <svg x-show="!mobileMenuOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="mobileMenuOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay & Menu -->
+    <div
+      x-show="mobileMenuOpen"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-4"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-4"
+      @click.away="mobileMenuOpen = false"
+      class="md:hidden border-b border-border-light dark:border-border-dark bg-white dark:bg-[#0c1324] px-4 pt-2 pb-6 space-y-3"
+      style="display: none;"
+    >
+      <nav class="flex flex-col space-y-2 pt-2 text-sm font-medium text-slate-700 dark:text-slate-200">
+        <a @click="mobileMenuOpen = false" href="#about" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">About</a>
+        <a @click="mobileMenuOpen = false" href="#skills" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Skills</a>
+        <a @click="mobileMenuOpen = false" href="#projects" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Projects</a>
+        <a @click="mobileMenuOpen = false" href="#research" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Research</a>
+        <a @click="mobileMenuOpen = false" href="#timeline" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Timeline</a>
+        <a @click="mobileMenuOpen = false" href="#certifications" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Certifications</a>
+        <a @click="mobileMenuOpen = false" href="#contact" class="px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Contact</a>
+        <a href="https://github.com/dhika-mahesa-s" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>GitHub: dhika-mahesa-s</span>
+        </a>
+        <div class="pt-2">
+          <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-md bg-accent text-slate-950 font-medium text-sm">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download CV (PDF)</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+
+  <main id="main-content">
+    
+  <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden border-b border-border-light dark:border-border-dark" aria-labelledby="hero-heading">
+    <!-- Subtle background grid aesthetic -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05]" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <!-- Status pill -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 text-xs font-mono mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+        <span>Open to full-time AI roles & research collaboration</span>
+      </div>
+
+      <!-- Identity & Headline -->
+      <div class="space-y-4 max-w-3xl">
+        <div class="space-y-1">
+          <h1 id="hero-heading" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            I build LLM and computer-vision systems that ship.
+          </h1>
+        </div>
+
+        <p class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          AI Engineer and Computer Science graduate focused on agentic RAG, computer vision, and AI for public-sector and agriculture data.
+        </p>
+
+        <!-- Profile metadata pill list -->
+        <div class="flex flex-wrap items-center gap-y-2 gap-x-4 pt-2 text-xs font-mono text-slate-500 dark:text-slate-400">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            Dhika Mahesa Syaputra, S.Kom.
+          </span>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            Padang, West Sumatra, Indonesia
+          </span>
+          <span class="text-slate-300 dark:text-slate-700">•</span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
+            Universitas Riau (GPA 3.88/4.00)
+          </span>
+        </div>
+
+        <!-- Hero CTAs -->
+        <div class="flex flex-wrap items-center gap-3 pt-6">
+          <a
+            href="#projects"
+            class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-accent text-slate-950 font-medium text-sm hover:bg-emerald-400 transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <span>View projects</span>
+            <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/60 text-slate-800 dark:text-slate-200 font-medium text-sm hover:border-accent hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <svg class="w-4 h-4 mr-1.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download CV</span>
+          </a>
+
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-accent font-medium text-sm transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <span>Contact Dhika →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Animated Stat Counters -->
+      <div
+        x-data="{
+          hasAnimated: false,
+          counters: [
+            { target: 99.4, current: 0, decimals: 1, suffix: '%', label: 'mAP@0.5 YOLOv8 Ganoderma detector', sublabel: '230 test images, 15,182 trees evaluated' },
+            { target: 88.32, current: 0, decimals: 2, suffix: '%', label: 'Test accuracy moon-phase classifier', sublabel: 'Thesis research, 291 held-out test images' },
+            { target: 3.88, current: 0, decimals: 2, suffix: ' / 4.00', label: 'Final Cumulative GPA', sublabel: 'Universitas Riau, Bachelor of Computer Science' }
+          ],
+          init() {
+            const observer = new IntersectionObserver((entries) => {
+              if (entries[0].isIntersecting && !this.hasAnimated) {
+                this.hasAnimated = true;
+                this.animateCounters();
+              }
+            }, { threshold: 0.2 });
+            observer.observe(this.$el);
+          },
+          animateCounters() {
+            const duration = 1200;
+            const startTime = performance.now();
+            const step = (now) => {
+              const progress = Math.min((now - startTime) / duration, 1);
+              const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+              this.counters.forEach(c => {
+                c.current = (c.target * easeProgress).toFixed(c.decimals);
+              });
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                this.counters.forEach(c => {
+                  c.current = c.target.toFixed(c.decimals);
+                });
+              }
+            };
+            requestAnimationFrame(step);
+          }
+        }"
+        class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-12 pt-8 border-t border-border-light dark:border-border-dark"
+      >
+        <template x-for="(counter, idx) in counters" :key="idx">
+          <div class="tech-card p-5 relative overflow-hidden group">
+            <div class="flex items-baseline gap-1">
+              <span class="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-accent tracking-tight" x-text="counter.current"></span>
+              <span class="text-lg sm:text-xl font-mono font-bold text-accent" x-text="counter.suffix"></span>
+            </div>
+            <div class="mt-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100" x-text="counter.label"></div>
+            <div class="mt-1 text-xs text-slate-500 dark:text-slate-400 font-mono" x-text="counter.sublabel"></div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="about" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="about-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 01. ABOUT</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- Main Narrative: Three short paragraphs under 130 words in total -->
+        <div class="lg:col-span-7 space-y-4">
+          <h2 id="about-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Engineering reliable AI from models to production edges
+          </h2>
+
+          <div class="space-y-3.5 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p>I build LLM applications using agentic RAG with LangGraph, LangChain, and Langflow alongside FAISS and ChromaDB vector search. I also engineer computer-vision models—including YOLOv8, ResNet50, and MobileNetV2—and deploy TensorFlow Lite models to offline-first Android applications.</p>
+            <p>As a Research Assistant, I investigated oil palm disease detection and NIR-based prediction, contributing to a manuscript under review at a Scopus-indexed journal. Previously, I interned as a Data Analyst at the West Sumatra Provincial Communications, Informatics, and Statistics Office building government dashboards. Separately, I was awarded the national Digital Talent Scholarship 2024 by the Ministry of Communication and Informatics.</p>
+            <p>I focus on delivering reliable, safety-aware AI systems with strict hallucination control, plain-language outputs, and transparent not-legal-advice disclaimers for high-impact decision support.</p>
+          </div>
+
+          <!-- Focus Area Chips -->
+          <div class="pt-4">
+            <h3 class="text-xs font-mono font-semibold uppercase text-slate-500 dark:text-slate-400 mb-3 tracking-wider">
+              Core Focus Areas
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  Agentic RAG
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  LLM applications
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  Computer Vision
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  Prompt Engineering
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  Edge AI on Android
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  Data Pipelines
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700/60 hover:border-accent/40 transition-colors">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+                  Dashboards
+                </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Facts Panel -->
+        <div class="lg:col-span-5">
+          <div class="tech-card p-6 space-y-4">
+            <h3 class="text-sm font-mono font-semibold uppercase text-accent tracking-wider border-b border-border-light dark:border-border-dark pb-3">
+              Quick Facts
+            </h3>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div>
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">Education</span>
+                <span class="font-medium text-slate-900 dark:text-slate-100">
+                  Bachelor of Computer Science (S.Kom.), Universitas Riau
+                </span>
+                <span class="text-slate-500 dark:text-slate-400 text-xs block font-mono">
+                  Department of Computer Science (Aug 2022 – Jun 2026)
+                </span>
+                <span class="text-accent text-xs font-mono block">
+                  Cumulative GPA: 3.88 / 4.00
+                </span>
+              </div>
+
+              <div>
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">National Award</span>
+                <span class="font-medium text-slate-900 dark:text-slate-100">
+                  Digital Talent Scholarship (DTS) 2024 awardee
+                </span>
+                <span class="text-slate-500 dark:text-slate-400 text-xs block font-mono">
+                  Ministry of Communication and Informatics (Kementerian Kominfo RI)
+                </span>
+              </div>
+
+              <div>
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">Location</span>
+                <span class="font-medium text-slate-900 dark:text-slate-100">
+                  Padang, West Sumatra, Indonesia
+                </span>
+              </div>
+
+              <div>
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">Languages</span>
+                <span class="font-medium text-slate-900 dark:text-slate-100">
+                  Indonesian (native), English (professional / fluent)
+                </span>
+              </div>
+
+              <div>
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">Open To</span>
+                <div class="space-y-1 mt-1">
+                  
+                    <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-200">
+                      <svg class="w-3.5 h-3.5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span>Full-time AI engineer roles</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-200">
+                      <svg class="w-3.5 h-3.5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span>Research collaboration</span>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="skills" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="skills-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 02. SKILLS</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="mb-8 max-w-2xl">
+        <h2 id="skills-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Technical Arsenal
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+          Specialized stack covering generative AI pipelines, deep computer vision, analytical pipelines, and edge Android deployments.
+        </p>
+      </div>
+
+      <!-- Tabbed Categories via Alpine.js -->
+      <div x-data="{ activeTab: 'llm-agentic-ai' }" class="space-y-6">
+        <!-- Category Tab Buttons -->
+        <div class="flex flex-wrap gap-2 border-b border-border-light dark:border-border-dark pb-3" role="tablist" aria-label="Skills categories">
+          
+            <button
+              @click="activeTab = 'llm-agentic-ai'"
+              :class="activeTab === 'llm-agentic-ai' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+              class="px-4 py-2 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+              role="tab"
+              :aria-selected="activeTab === 'llm-agentic-ai'"
+              aria-controls="panel-llm-agentic-ai"
+            >
+              LLM and agentic AI
+            </button>
+            <button
+              @click="activeTab = 'ml-computer-vision'"
+              :class="activeTab === 'ml-computer-vision' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+              class="px-4 py-2 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+              role="tab"
+              :aria-selected="activeTab === 'ml-computer-vision'"
+              aria-controls="panel-ml-computer-vision"
+            >
+              ML and computer vision
+            </button>
+            <button
+              @click="activeTab = 'data-bi'"
+              :class="activeTab === 'data-bi' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+              class="px-4 py-2 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+              role="tab"
+              :aria-selected="activeTab === 'data-bi'"
+              aria-controls="panel-data-bi"
+            >
+              Data and BI
+            </button>
+            <button
+              @click="activeTab = 'backend-deployment'"
+              :class="activeTab === 'backend-deployment' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+              class="px-4 py-2 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+              role="tab"
+              :aria-selected="activeTab === 'backend-deployment'"
+              aria-controls="panel-backend-deployment"
+            >
+              Backend and deployment
+            </button>
+            <button
+              @click="activeTab = 'cloud-tools'"
+              :class="activeTab === 'cloud-tools' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+              class="px-4 py-2 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+              role="tab"
+              :aria-selected="activeTab === 'cloud-tools'"
+              aria-controls="panel-cloud-tools"
+            >
+              Cloud and tools
+            </button>
+        </div>
+
+        <!-- Category Tab Panels -->
+        
+          <div
+            x-show="activeTab === 'llm-agentic-ai'"
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            id="panel-llm-agentic-ai"
+            role="tabpanel"
+            class="tech-card p-6"
+            style=""
+          >
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-border-light dark:border-border-dark">
+              <h3 class="text-sm font-mono font-semibold uppercase text-accent tracking-wider">
+                LLM and agentic AI
+              </h3>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                13 verified competencies
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Gemini
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Llama 3.3 70B
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    GPT-OSS 120B
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Claude
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    prompt engineering
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    structured outputs
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    RAG
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    FAISS
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    ChromaDB
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    embeddings
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    LangChain
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    LangGraph
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Langflow
+                  </span>
+                </div>
+            </div>
+          </div>
+          <div
+            x-show="activeTab === 'ml-computer-vision'"
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            id="panel-ml-computer-vision"
+            role="tabpanel"
+            class="tech-card p-6"
+            style="display: none;"
+          >
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-border-light dark:border-border-dark">
+              <h3 class="text-sm font-mono font-semibold uppercase text-accent tracking-wider">
+                ML and computer vision
+              </h3>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                11 verified competencies
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    YOLOv8
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    ResNet50
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    MobileNetV2 (transfer learning)
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    TensorFlow
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    TensorFlow Lite
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    XGBoost
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    MLP regression
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    scikit-learn
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    supervised and unsupervised learning
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    NIR spectral data analysis
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    model evaluation (precision, recall, mAP, F1, cross-validation)
+                  </span>
+                </div>
+            </div>
+          </div>
+          <div
+            x-show="activeTab === 'data-bi'"
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            id="panel-data-bi"
+            role="tabpanel"
+            class="tech-card p-6"
+            style="display: none;"
+          >
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-border-light dark:border-border-dark">
+              <h3 class="text-sm font-mono font-semibold uppercase text-accent tracking-wider">
+                Data and BI
+              </h3>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                8 verified competencies
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Python
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    SQL
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Pandas
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Tableau
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Looker Studio
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Excel
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    geospatial analysis
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    ETL pipelines
+                  </span>
+                </div>
+            </div>
+          </div>
+          <div
+            x-show="activeTab === 'backend-deployment'"
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            id="panel-backend-deployment"
+            role="tabpanel"
+            class="tech-card p-6"
+            style="display: none;"
+          >
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-border-light dark:border-border-dark">
+              <h3 class="text-sm font-mono font-semibold uppercase text-accent tracking-wider">
+                Backend and deployment
+              </h3>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                8 verified competencies
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Flask
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    FastAPI
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Spring Boot
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    REST API integration
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Gradio
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Streamlit
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Android (Java, MVVM, Room, SQLite)
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    web server deployment
+                  </span>
+                </div>
+            </div>
+          </div>
+          <div
+            x-show="activeTab === 'cloud-tools'"
+            x-transition:enter="transition ease-out duration-150"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            id="panel-cloud-tools"
+            role="tabpanel"
+            class="tech-card p-6"
+            style="display: none;"
+          >
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-border-light dark:border-border-dark">
+              <h3 class="text-sm font-mono font-semibold uppercase text-accent tracking-wider">
+                Cloud and tools
+              </h3>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                6 verified competencies
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Oracle Cloud Infrastructure (Certified Foundations Associate)
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Google Cloud Platform
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Docker and CI/CD
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    MLOps
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Git/GitHub
+                  </span>
+                </div>
+                <div class="flex items-center gap-2.5 p-3 rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-accent/40 transition-colors">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 font-mono">
+                    Google Colab
+                  </span>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="projects" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="projects-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 03. PROJECTS</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <h2 id="projects-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Featured Systems & Proof of Impact
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-2xl">
+            Each project features validated empirical benchmarks, reproducible methodologies, and dedicated architectural deep dives.
+          </p>
+        </div>
+      </div>
+
+      <!-- Projects Alpine Filter Component -->
+      <div x-data="{ currentFilter: 'all' }" class="space-y-8">
+        <!-- Filter Category Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-border-light dark:border-border-dark pb-3">
+          <button
+            @click="currentFilter = 'all'"
+            :class="currentFilter === 'all' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            All Projects (8)
+          </button>
+          <button
+            @click="currentFilter = 'llm-rag'"
+            :class="currentFilter === 'llm-rag' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            LLM & RAG
+          </button>
+          <button
+            @click="currentFilter = 'cv'"
+            :class="currentFilter === 'cv' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Computer Vision
+          </button>
+          <button
+            @click="currentFilter = 'mobile'"
+            :class="currentFilter === 'mobile' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Mobile & Edge AI
+          </button>
+          <button
+            @click="currentFilter = 'data-ml'"
+            :class="currentFilter === 'data-ml' ? 'bg-accent text-slate-950 font-semibold border-accent' : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-border-light dark:border-border-dark hover:border-accent/40'"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-mono border transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Data & ML
+          </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'llm-rag'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/citecheck-ai.svg"
+                    alt="CiteCheck AI LangGraph agentic RAG architecture and citation verification workflow"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      LLM and RAG
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Maju Bareng AI by Hacktiv8: LLM-Based Tools and Gemini API Integration for Data Scientists
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/citecheck-ai" class="focus:outline-none focus-visible:underline">
+                      CiteCheck AI
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Agentic RAG citation verification system checking whether thesis claims are supported, contradicted, or unrelated to uploaded source papers.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>84% verdict accuracy achieved across 25 evaluated claim–paper benchmark pairs</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Autonomous fallback routing to Semantic Scholar API via LLM query rewriter when local evidence is insufficient</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Conversation memory integration using MemorySaver for multi-turn claim refinement</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        LangGraph
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Llama 3.3 70B
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        GPT-OSS 120B
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        embeddings
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        FAISS
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        ChromaDB
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        prompt engineering
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Gradio
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/citecheck-ai"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'llm-rag'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/kontrak-aman.svg"
+                    alt="Kontrak Aman Langflow pipeline and structured legal risk report interface"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      LLM and RAG
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    IBM SkillsBuild University Education Program: Legal – AI Agent for Legal, via Hacktiv8
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/kontrak-aman" class="focus:outline-none focus-visible:underline">
+                      Kontrak Aman
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Employment contract risk checker for fresh graduates identifying high-risk clauses against Indonesian labor law (UU Ketenagakerjaan).
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Detected 6 out of 6 seeded red-flag clauses on a fictitious test contract</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Rated the synthetic high-risk contract 8/10 risk score with plain-language explanations</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Delivered a 10-category breakdown with questions to ask HR and UU Ketenagakerjaan citations</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Gemini
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Langflow
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        structured outputs
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        prompt engineering
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/kontrak-aman"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'mobile'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/moon-phase.svg"
+                    alt="Moon-phase classification Android application interface and inference benchmark"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      Mobile
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Undergraduate thesis, Universitas Riau
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/moon-phase-fishing-recommendation" class="focus:outline-none focus-visible:underline">
+                      Moon-Phase Classification & Fishing Recommendation System
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Offline-first Android edge AI app running an 88.32% accurate MobileNetV2 TFLite model combined with real-time ocean data for artisanal fishermen.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>88.32% test accuracy on 8-class moon-phase classification across 291 held-out test images</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>77% model compression (from 22 MB down to 5 MB) via TensorFlow Lite optimization</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>100–200 ms on-device inference latency per image on mobile CPU</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Manuscript under review at Indonesian Journal of Electrical Engineering and Informatics (IJEEI, Scopus-indexed Q3)</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        MobileNetV2 (transfer learning)
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        TensorFlow
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        TensorFlow Lite
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Android (Java, MVVM, Room, SQLite)
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        REST API integration
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        model evaluation (precision, recall, mAP, F1, cross-validation)
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/moon-phase-fishing-recommendation"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'cv'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/ganoderma-yolov8.svg"
+                    alt="YOLOv8 bounding box detection of Ganoderma disease in oil palm plantation imagery"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      Computer Vision
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Research Assistantship, Universitas Riau Computer Science Lab
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/ganoderma-detection-oil-palm" class="focus:outline-none focus-visible:underline">
+                      Ganoderma Disease Detection in Oil Palm
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    High-throughput computer vision models for Ganoderma basal stem rot detection in oil palm plantations, evaluating YOLOv8 and ResNet50.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>99.4% mAP@0.5 and 99.5% recall on unhealthy tree class with YOLOv8 (230 test images, 15,182 trees)</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>~18 ms per image inference (~66 trees/frame) on Tesla T4, versus 2–5 minutes per tree for manual inspection</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>0.80 precision and recall achieved by ResNet50 classifier on 656 annotated images</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Models evaluated separately; explicitly not yet combined into a single pipeline</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        YOLOv8
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        ResNet50
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        supervised and unsupervised learning
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        model evaluation (precision, recall, mAP, F1, cross-validation)
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/ganoderma-detection-oil-palm"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'data-ml'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/nir-prediction.svg"
+                    alt="NIR spectral absorbance curve analysis and MLP regression prediction plot"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      Data and ML
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Research Assistantship, Universitas Riau Computer Science Lab
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/nir-ffa-rendemen-prediction" class="focus:outline-none focus-visible:underline">
+                      Free Fatty Acid (FFA) & Rendemen Prediction from NIR Spectra
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Multilayer Perceptron regression model predicting FFA and extraction yield (rendemen) from multi-angle near-infrared spectral data.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>R² score of 0.78 achieved on 64 palm oil fruit samples captured from diverse scanning angles</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Root Mean Squared Error (RMSE) held to 6.03 across prediction trials</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Contribution to scientific manuscript in preparation</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        MLP regression
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        NIR spectral data analysis
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        scikit-learn
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Python
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        model evaluation (precision, recall, mAP, F1, cross-validation)
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/nir-ffa-rendemen-prediction"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'data-ml'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/ripeness-xgboost.svg"
+                    alt="XGBoost feature separation between ripe and unripe oil palm fruit physicochemical markers"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      Data and ML
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Research Project, Universitas Riau
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/oil-palm-fruit-ripeness-classification" class="focus:outline-none focus-visible:underline">
+                      Oil Palm Fruit Ripeness Physicochemical Classification
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    XGBoost classification identifying ripe vs. unripe oil palm fruit from physicochemical features using Leave-One-Out Cross-Validation.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>86% accuracy and 0.86 macro F1 score on a balanced dataset of 50 samples</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>LOOCV evaluation rigorously applied because a fixed train/test split would leave too few test instances</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Identified moisture content and beta-carotene as reliable quantitative indicators of fruit maturity</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        XGBoost
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        scikit-learn
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Pandas
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Python
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        model evaluation (precision, recall, mAP, F1, cross-validation)
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/oil-palm-fruit-ripeness-classification"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'data-ml'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/government-dashboard.svg"
+                    alt="West Sumatra provincial government dashboard with geospatial regional performance index"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      Data and ML
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Data Analyst Internship, Dinas Komunikasi, Informatika, dan Statistik Provinsi Sumatera Barat (Diskominfotik Pemprov Sumbar, Jan–Mar 2025)
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/provincial-government-dashboards" class="focus:outline-none focus-visible:underline">
+                      Provincial Government Dashboards & ETL Pipeline
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Automated multi-source data pipeline and 4+ interactive Tableau/Python dashboards covering 19 regencies and cities for provincial policymakers.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>50% reduction in dataset preparation time across 20+ municipal and national data feeds</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>4+ interactive dashboards deployed covering all 19 West Sumatra regencies and cities</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Reduced report sharing from 5 manual export steps down to a single click</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Formulated regional performance index (Indeks Kinerja Daerah) and geospatial Tableau visualizations</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Python
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Pandas
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Tableau
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Excel
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        geospatial analysis
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        ETL pipelines
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/provincial-government-dashboards"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+            <article
+              x-show="currentFilter === 'all' || currentFilter === 'data-ml'"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 scale-98"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="tech-card overflow-hidden flex flex-col justify-between group"
+            >
+              <div>
+                <!-- Image Slot / SVG Architecture Diagram -->
+                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
+                  <img
+                    src="/img/projects/saturute.svg"
+                    alt="SatuRute community ride-sharing corridor analysis and demographic distribution map"
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+                  />
+                  <!-- Category Overlay Badge -->
+                  <div class="absolute top-3 left-3">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
+                      Data and ML
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Content -->
+                <div class="p-6 space-y-4">
+                  <!-- Program / Context -->
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                    Astra Honda SDGs Future Leaders 2025 (National program, 100+ participants)
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-accent transition-colors">
+                    <a href="/projects/saturute-ride-sharing" class="focus:outline-none focus-visible:underline">
+                      SatuRute – Community Ride-Sharing Prototype
+                    </a>
+                  </h3>
+
+                  <!-- Summary -->
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Community ride-sharing prototype addressing traffic congestion and carbon emissions in Pekanbaru through Python and Tableau demographic analytics.
+                  </p>
+
+                  <!-- Key Results Box -->
+                  <div class="p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 space-y-1.5">
+                    <span class="text-xs font-mono font-semibold uppercase text-emerald-700 dark:text-emerald-400 block tracking-wider">
+                      Key Results &amp; Impact
+                    </span>
+                    <ul class="text-xs text-slate-700 dark:text-slate-200 space-y-1">
+                      
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Selected participant representing Pekanbaru in Astra Honda SDGs Future Leaders 2025 among 100+ national candidates</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Synthesized traffic flow and commuter demographic models with Python and Tableau</span>
+                        </li>
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-accent flex-shrink-0 mt-0.5">✓</span>
+                          <span>Quantified target emissions reduction projections for high-density academic and commercial corridors</span>
+                        </li>
+                    </ul>
+                  </div>
+
+                  <!-- Tech Tags (strictly validated against skills list) -->
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Python
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        Tableau
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                        geospatial analysis
+                      </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="p-6 pt-0 mt-4 flex items-center justify-between border-t border-border-light dark:border-border-dark pt-4">
+                <a
+                  href="/projects/saturute-ride-sharing"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline focus-visible:ring-1 focus-visible:ring-accent rounded"
+                >
+                  <span>Case Study Deep Dive</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add link">[TODO: add link]</span></span>
+                  <span><span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: add demo link">[TODO: add demo link]</span></span>
+                </div>
+              </div>
+            </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="research" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="research-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 04. RESEARCH</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="mb-10 max-w-2xl">
+        <h2 id="research-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Scientific Investigations
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+          Rigorous academic research conducted at Universitas Riau Department of Computer Science Laboratory across agricultural computer vision and NIR spectroscopy.
+        </p>
+      </div>
+
+      <!-- Numbered Research Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+          <div class="tech-card p-6 flex flex-col justify-between space-y-5 relative">
+            <div>
+              <!-- Header with Number and Status -->
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <span class="font-mono text-3xl font-bold text-accent/80 tracking-tight">
+                  01
+                </span>
+
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30">
+                  Peer Review
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                Moon-Phase Classification for Fishing Recommendation
+              </h3>
+
+              <!-- Structured Fields: Objective, Method, Status -->
+              <div class="space-y-3 mt-4 text-xs sm:text-sm">
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Objective</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Deliver real-time, offline lunar phase intelligence and ocean safety recommendations to coastal artisanal fishermen directly on mobile devices.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Method</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    MobileNetV2 with 3-phase progressive transfer learning, quantized to TensorFlow Lite (5 MB) and embedded in an offline-first Android app with Stormglass API integration.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Status</span>
+                  <p class="font-mono text-xs text-accent font-semibold mt-0.5">
+                    Manuscript under review at Indonesian Journal of Electrical Engineering and Informatics (IJEEI, Scopus-indexed Q3)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border-light dark:border-border-dark">
+              
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  MobileNetV2 (transfer learning)
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  TensorFlow Lite
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  Android (Java, MVVM, Room, SQLite)
+                </span>
+            </div>
+          </div>
+          <div class="tech-card p-6 flex flex-col justify-between space-y-5 relative">
+            <div>
+              <!-- Header with Number and Status -->
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <span class="font-mono text-3xl font-bold text-accent/80 tracking-tight">
+                  02
+                </span>
+
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30">
+                  Manuscript Prep
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                Deep Learning for Oil Palm Plantations
+              </h3>
+
+              <!-- Structured Fields: Objective, Method, Status -->
+              <div class="space-y-3 mt-4 text-xs sm:text-sm">
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Objective</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Evaluate deep learning vision architectures to automate high-throughput crop surveillance across extensive commercial oil palm plantations.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Method</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Comparative investigation of bounding-box instance detectors and deep convolutional classifiers on extensive plantation image datasets.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Status</span>
+                  <p class="font-mono text-xs text-accent font-semibold mt-0.5">
+                    Scientific article, manuscript in preparation
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border-light dark:border-border-dark">
+              
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  YOLOv8
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  ResNet50
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  supervised and unsupervised learning
+                </span>
+            </div>
+          </div>
+          <div class="tech-card p-6 flex flex-col justify-between space-y-5 relative">
+            <div>
+              <!-- Header with Number and Status -->
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <span class="font-mono text-3xl font-bold text-accent/80 tracking-tight">
+                  03
+                </span>
+
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30">
+                  Manuscript Prep
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                Free Fatty Acid (FFA) & Rendemen Prediction from NIR Spectra
+              </h3>
+
+              <!-- Structured Fields: Objective, Method, Status -->
+              <div class="space-y-3 mt-4 text-xs sm:text-sm">
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Objective</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Enable rapid, non-destructive chemical grading of palm oil fruit bunches without destructive wet-chemical lab titration.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Method</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Multilayer Perceptron (MLP) Regressor trained on multi-angle near-infrared (NIR) spectral absorbance measurements from 64 sample batches (R² 0.78, RMSE 6.03).
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Status</span>
+                  <p class="font-mono text-xs text-accent font-semibold mt-0.5">
+                    Research completed, manuscript in preparation
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border-light dark:border-border-dark">
+              
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  MLP regression
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  NIR spectral data analysis
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  Python
+                </span>
+            </div>
+          </div>
+          <div class="tech-card p-6 flex flex-col justify-between space-y-5 relative">
+            <div>
+              <!-- Header with Number and Status -->
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <span class="font-mono text-3xl font-bold text-accent/80 tracking-tight">
+                  04
+                </span>
+
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                  Completed
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+                Ganoderma Disease Detection in Oil Palm
+              </h3>
+
+              <!-- Structured Fields: Objective, Method, Status -->
+              <div class="space-y-3 mt-4 text-xs sm:text-sm">
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Objective</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Detect destructive Ganoderma basal stem rot infections in oil palm trees rapidly to replace manual 2–5 minute tree inspections.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Method</span>
+                  <p class="text-slate-700 dark:text-slate-300 mt-0.5 leading-relaxed">
+                    Evaluated two separate models independently: YOLOv8 object detector (99.4% mAP@0.5, 99.5% recall on unhealthy trees, ~18 ms/image) and ResNet50 classifier (0.80 precision/recall on 656 images). Models evaluated separately, not combined into one pipeline.
+                  </p>
+                </div>
+
+                <div>
+                  <span class="text-slate-500 dark:text-slate-400 font-mono text-xs uppercase tracking-wider block">Status</span>
+                  <p class="font-mono text-xs text-accent font-semibold mt-0.5">
+                    Evaluation completed (separate model benchmarks)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border-light dark:border-border-dark">
+              
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  YOLOv8
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  ResNet50
+                </span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  model evaluation (precision, recall, mAP, F1, cross-validation)
+                </span>
+            </div>
+          </div>
+      </div>
+
+      <!-- Experience Highlight Sub-Section -->
+      <div class="mt-12 pt-8 border-t border-border-light dark:border-border-dark">
+        <h3 class="text-xs font-mono font-semibold uppercase text-accent tracking-wider mb-6">
+          Formal Experience &amp; Appointments
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+            <div class="tech-card p-6 space-y-4">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
+                  <span>Jun 2026 – Oct 2026</span>
+                  <span>Pekanbaru, Indonesia</span>
+                </div>
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">
+                  Research Assistant <span class="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-mono font-medium rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30" title="TODO Placeholder: part-time / full-time">[TODO: part-time / full-time]</span>
+                </h4>
+                <div class="text-xs text-accent font-mono mt-0.5">
+                  Department of Computer Science Laboratory, Universitas Riau
+                </div>
+              </div>
+
+              <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span> Built a YOLOv8 detector that screens oil palm plantation images for unhealthy (Ganoderma-affected) trees, reaching 99.5% recall and 99.4% mAP@0.5 on 230 test images (15,182 trees) and cutting inspection time from an estimated 2–5 minutes per tree (manual survey) to ~18 ms per image of ~66 trees.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Trained a ResNet50 classifier to identify Ganoderma-infected oil palm trees, reaching 0.80 precision and recall on 656 annotated images.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Co-developed an MLP Regressor on multi-angle near-infrared (NIR) spectral data for non-destructive FFA and rendemen prediction (R² 0.78, RMSE 6.03).</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Co-contributed core empirical results and methodology sections to a scientific article (manuscript in preparation).</span>
+                  </li>
+              </ul>
+
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    YOLOv8
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    ResNet50
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    MLP regression
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    NIR spectral data analysis
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    Python
+                  </span>
+              </div>
+            </div>
+            <div class="tech-card p-6 space-y-4">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
+                  <span>Jan 2025 – Mar 2025</span>
+                  <span>Padang, West Sumatra, Indonesia</span>
+                </div>
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">
+                  Data Analyst (Internship) Internship
+                </h4>
+                <div class="text-xs text-accent font-mono mt-0.5">
+                  Dinas Komunikasi, Informatika, dan Statistik Provinsi Sumatera Barat (Diskominfotik Pemprov Sumbar)
+                </div>
+              </div>
+
+              <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2">
+                
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Developed and deployed 4+ interactive dashboards (Python, Tableau, Excel) visualizing socio-economic indicators across all 19 West Sumatra regencies and cities.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Constructed a Pandas and Excel automated harmonization pipeline consolidating datasets from 20+ sources (BPS and internal portals), slashing preparation time by 50%.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Redesigned the executive dashboard interface with dynamic filters and one-click PDF export, reducing report distribution from 5 manual steps to 1 click.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-1">•</span>
+                    <span>Co-created the regional performance index (Indeks Kinerja Daerah) and created Tableau geospatial thematic maps.</span>
+                  </li>
+              </ul>
+
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    Python
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    Pandas
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    Tableau
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    Excel
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    geospatial analysis
+                  </span>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                    ETL pipelines
+                  </span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="timeline" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="timeline-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 05. TIMELINE</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="mb-10 max-w-2xl">
+        <h2 id="timeline-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Journey &amp; Milestones
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+          From computer science foundations at Universitas Riau to production AI engineering and national scholarships.
+        </p>
+      </div>
+
+      <!-- Chronological Roadmap -->
+      <div class="relative pl-6 sm:pl-8 border-l-2 border-border-light dark:border-border-dark space-y-10">
+        
+          <div class="relative group">
+            <!-- Timeline Pin Dot -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-100 dark:bg-slate-900 border-2 border-accent group-hover:scale-125 transition-transform"></div>
+
+            <div class="space-y-2">
+              <span class="inline-block font-mono text-sm font-bold text-accent">
+                2026
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                Research Assistant, Thesis Defense & Hacktiv8 Specialization
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                Completed Bachelor of Computer Science at Universitas Riau in June 2026 with 3.88/4.00 final GPA. Completed Hacktiv8 advanced programs and served as appointed Research Assistant.
+              </p>
+
+              
+              <ul class="pt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 max-w-3xl">
+                
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Graduated with Bachelor of Computer Science (S.Kom.), final GPA 3.88/4.00 (June 2026)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Undergraduate thesis: Moon-phase classification and fishing recommendation system (MobileNetV2, TFLite, Android)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Appointed Research Assistant at Universitas Riau Computer Science Lab (Jun–Oct 2026)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Hacktiv8 Maju Bareng AI Program: LLM-Based Tools & Gemini API Integration for Data Scientists</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Hacktiv8 IBM SkillsBuild University Education Program: Legal – AI Agent for Legal</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Belajar Dasar AI, Dicoding Academy</span>
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <div class="relative group">
+            <!-- Timeline Pin Dot -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-100 dark:bg-slate-900 border-2 border-accent group-hover:scale-125 transition-transform"></div>
+
+            <div class="space-y-2">
+              <span class="inline-block font-mono text-sm font-bold text-accent">
+                2025
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                Provincial Data Analyst Internship, SDGs Leadership & Data Science Training
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                Interned at West Sumatra provincial government, represented Pekanbaru in SDGs Future Leaders, and achieved professional data science foundations.
+              </p>
+
+              
+              <ul class="pt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 max-w-3xl">
+                
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Data Analyst Internship at Dinas Komunikasi, Informatika, dan Statistik Provinsi Sumatera Barat (Diskominfotik Pemprov Sumbar, Jan–Mar 2025)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Built 4+ provincial dashboards, Indeks Kinerja Daerah, and 20+ source automated Pandas ETL pipeline</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Selected participant in Astra Honda SDGs Future Leaders 2025 for SatuRute community ride-sharing prototype</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Hacktiv8 Student Developer Initiative: Data Classification and Summarization</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Dicoding Academy: Belajar Dasar Data Science, Memulai Pemrograman dengan Python, Belajar Dasar SQL</span>
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <div class="relative group">
+            <!-- Timeline Pin Dot -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-100 dark:bg-slate-900 border-2 border-accent group-hover:scale-125 transition-transform"></div>
+
+            <div class="space-y-2">
+              <span class="inline-block font-mono text-sm font-bold text-accent">
+                2024
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                Digital Talent Scholarship Awardee & Cloud Certifications
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                Awarded national DTS scholarship by Kominfo and achieved industry cloud certifications from Oracle.
+              </p>
+
+              
+              <ul class="pt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 max-w-3xl">
+                
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Awarded Digital Talent Scholarship (DTS) 2024 by Ministry of Communication and Informatics (Kominfo)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Oracle Cloud Infrastructure 2023 Certified Foundations Associate</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Oracle Cloud Infrastructure Foundation I & II (Talent Scouting Academy, DTS)</span>
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <div class="relative group">
+            <!-- Timeline Pin Dot -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-100 dark:bg-slate-900 border-2 border-accent group-hover:scale-125 transition-transform"></div>
+
+            <div class="space-y-2">
+              <span class="inline-block font-mono text-sm font-bold text-accent">
+                2023
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                Oracle Academy Java Programming & Object-Oriented Software Foundations
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                Completed rigorous software engineering coursework in Java programming and foundational algorithms.
+              </p>
+
+              
+              <ul class="pt-2 space-y-1.5 text-xs text-slate-600 dark:text-slate-300 max-w-3xl">
+                
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Java Programming, Oracle Academy</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-accent flex-shrink-0 mt-0.5">▹</span>
+                    <span>Java Fundamentals, Oracle Academy</span>
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <div class="relative group">
+            <!-- Timeline Pin Dot -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-100 dark:bg-slate-900 border-2 border-accent group-hover:scale-125 transition-transform"></div>
+
+            <div class="space-y-2">
+              <span class="inline-block font-mono text-sm font-bold text-accent">
+                2022
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                Commenced Bachelor of Computer Science at Universitas Riau
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                Began undergraduate studies in Department of Computer Science, Faculty of Mathematics and Natural Sciences (Aug 2022).
+              </p>
+
+              
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="certifications" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="certifications-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 06. CERTIFICATIONS</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="mb-10 max-w-2xl">
+        <h2 id="certifications-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Accredited Credentials &amp; Programs
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+          10 verified certifications spanning Oracle Cloud Infrastructure, IBM SkillsBuild, Hacktiv8, Dicoding Academy, and Oracle Academy.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #01
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Oracle Cloud Infrastructure 2023 Certified Foundations Associate
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Oracle</span>
+                <span class="text-accent font-semibold">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #02
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Oracle Cloud Infrastructure Foundation I & II
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Talent Scouting Academy, Digital Talent Scholarship</span>
+                <span class="text-accent font-semibold">2024</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #03
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Maju Bareng AI Program: LLM-Based Tools and Gemini API Integration for Data Scientists
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Hacktiv8</span>
+                <span class="text-accent font-semibold">2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #04
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                IBM SkillsBuild University Education Program: Legal – AI Agent for Legal
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Hacktiv8 & IBM SkillsBuild</span>
+                <span class="text-accent font-semibold">2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #05
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Data Classification and Summarization
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Student Developer Initiative Program, Hacktiv8</span>
+                <span class="text-accent font-semibold">2025</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #06
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Belajar Dasar AI
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Dicoding Academy</span>
+                <span class="text-accent font-semibold">2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #07
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Belajar Dasar Data Science
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Dicoding Academy</span>
+                <span class="text-accent font-semibold">2025</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #08
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Memulai Pemrograman dengan Python
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Dicoding Academy</span>
+                <span class="text-accent font-semibold">2025</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #09
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Belajar Dasar Structured Query Language (SQL)
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Dicoding Academy</span>
+                <span class="text-accent font-semibold">2025</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-card p-4 flex items-start gap-4">
+            <span class="font-mono text-xs font-semibold text-accent/80 mt-0.5 flex-shrink-0">
+              #10
+            </span>
+
+            <div class="space-y-1 flex-grow">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white leading-snug">
+                Java Programming and Java Fundamentals
+              </h3>
+              <div class="flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span>Oracle Academy</span>
+                <span class="text-accent font-semibold">2023</span>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  
+    
+  <section id="contact" class="py-16 md:py-24 border-b border-border-light dark:border-border-dark" aria-labelledby="contact-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 mb-8">
+        <span class="font-mono text-xs text-accent font-semibold tracking-wider uppercase">// 07. CONTACT</span>
+        <div class="h-px bg-border-light dark:bg-border-dark flex-grow"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- Left: Direct Communication & Profile Info -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <h2 id="contact-heading" class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Let's build something remarkable
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+              I am actively open to full-time AI engineer roles and research collaborations in agentic RAG, computer vision, and high-impact machine learning.
+            </p>
+          </div>
+
+          <!-- Direct Links Card -->
+          <div class="tech-card p-5 space-y-4">
+            <!-- Email -->
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </div>
+              <div class="text-xs sm:text-sm">
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">Email</span>
+                <a href="mailto:dhikamahesa45@gmail.com" class="font-mono font-medium text-slate-900 dark:text-white hover:text-accent transition-colors">
+                  dhikamahesa45@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent flex-shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </div>
+              <div class="text-xs sm:text-sm">
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/dhika-mahesa-syaputra-456748374" target="_blank" rel="noopener noreferrer" class="font-mono font-medium text-slate-900 dark:text-white hover:text-accent transition-colors">
+                  linkedin.com/in/dhika-mahesa-syaputra
+                </a>
+              </div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center text-accent flex-shrink-0">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+              </div>
+              <div class="text-xs sm:text-sm">
+                <span class="text-slate-500 dark:text-slate-400 font-mono text-xs block">GitHub</span>
+                <a href="https://github.com/dhika-mahesa-s" target="_blank" rel="noopener noreferrer" class="font-mono font-medium text-slate-900 dark:text-white hover:text-accent transition-colors">
+                        github.com/dhika-mahesa-s
+                      </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Contact Form powered by Alpine.js -->
+        <div class="lg:col-span-7">
+          <div
+            x-data="{
+              name: '',
+              email: '',
+              subject: 'Job opportunity',
+              message: '',
+              company_fax_hp: '', // Honeypot field
+              isLoading: false,
+              isSuccess: false,
+              isError: false,
+              errorMessage: '',
+              fallbackMailto: '',
+
+              async submitForm() {
+                // Client-side quick validation
+                if (!this.name.trim() || !this.email.trim() || !this.message.trim()) {
+                  this.isError = true;
+                  this.errorMessage = 'Please complete all required fields.';
+                  return;
+                }
+
+                this.isLoading = true;
+                this.isError = false;
+                this.isSuccess = false;
+                this.errorMessage = '';
+
+                try {
+                  const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      name: this.name,
+                      email: this.email,
+                      subject: this.subject,
+                      message: this.message,
+                      company_fax_hp: this.company_fax_hp
+                    })
+                  });
+
+                  const data = await res.json();
+
+                  if (res.ok && data.success) {
+                    if (data.fallback && data.mailto) {
+                      // Handled fallback to mailto
+                      this.fallbackMailto = data.mailto;
+                      window.location.href = data.mailto;
+                    }
+                    this.isSuccess = true;
+                    this.name = '';
+                    this.email = '';
+                    this.message = '';
+                  } else {
+                    this.isError = true;
+                    this.errorMessage = data.error || 'Failed to submit message. Please reach out via email directly.';
+                    if (data.mailto) {
+                      this.fallbackMailto = data.mailto;
+                    }
+                  }
+                } catch (err) {
+                  this.isError = true;
+                  this.errorMessage = 'Network error occurred. You can reach out directly via dhikamahesa45@gmail.com.';
+                  this.fallbackMailto = 'mailto:dhikamahesa45@gmail.com?subject=' + encodeURIComponent(this.subject) + '&body=' + encodeURIComponent(this.message);
+                } finally {
+                  this.isLoading = false;
+                }
+              }
+            }"
+            class="tech-card p-6 sm:p-8"
+          >
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-6">
+              Send a Message
+            </h3>
+
+            <!-- Success Banner -->
+            <div
+              x-show="isSuccess"
+              x-transition
+              class="mb-6 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs sm:text-sm space-y-1"
+              role="alert"
+              style="display: none;"
+            >
+              <div class="font-bold flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                <span>Message Received!</span>
+              </div>
+              <p>Thank you for reaching out. Dhika will review your message and respond shortly.</p>
+            </div>
+
+            <!-- Error Banner -->
+            <div
+              x-show="isError"
+              x-transition
+              class="mb-6 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-800 dark:text-red-300 text-xs sm:text-sm space-y-2"
+              role="alert"
+              style="display: none;"
+            >
+              <div class="font-bold flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span x-text="errorMessage"></span>
+              </div>
+              <div x-show="fallbackMailto">
+                <a :href="fallbackMailto" class="inline-flex items-center gap-1 font-mono text-xs text-accent underline">
+                  Click here to send directly via your mail client →
+                </a>
+              </div>
+            </div>
+
+            <form @submit.prevent="submitForm()" class="space-y-4" novalidate>
+              <!-- Honeypot Field (Hidden from human visitors) -->
+              <div class="hidden" aria-hidden="true">
+                <label for="company_fax_hp">Leave this empty</label>
+                <input type="text" id="company_fax_hp" x-model="company_fax_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- Name & Email Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-name" class="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    Your Name <span class="text-accent">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    x-model="name"
+                    required
+                    placeholder="Recruiter or Colleague"
+                    class="w-full px-3.5 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-border-light dark:border-border-dark text-slate-900 dark:text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-accent transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label for="contact-email" class="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    Your Email <span class="text-accent">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    x-model="email"
+                    required
+                    placeholder="name@company.com"
+                    class="w-full px-3.5 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-border-light dark:border-border-dark text-slate-900 dark:text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-accent transition-colors"
+                  />
+                </div>
+              </div>
+
+              <!-- Subject Dropdown -->
+              <div>
+                <label for="contact-subject" class="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                  Subject <span class="text-accent">*</span>
+                </label>
+                <select
+                  id="contact-subject"
+                  x-model="subject"
+                  class="w-full px-3.5 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-border-light dark:border-border-dark text-slate-900 dark:text-white text-xs sm:text-sm focus:outline-none focus:border-accent transition-colors"
+                >
+                  <option value="Job opportunity">Job opportunity</option>
+                  <option value="Research collaboration">Research collaboration</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Message Textarea -->
+              <div>
+                <label for="contact-message" class="block text-xs font-mono font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                  Message <span class="text-accent">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  x-model="message"
+                  required
+                  rows="4"
+                  placeholder="Share details regarding your role, project, or research scope..."
+                  class="w-full px-3.5 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-border-light dark:border-border-dark text-slate-900 dark:text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-accent transition-colors resize-y"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-2 flex items-center justify-between">
+                <button
+                  type="submit"
+                  :disabled="isLoading"
+                  class="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-accent text-slate-950 font-semibold text-xs sm:text-sm hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <span x-show="!isLoading">Send Inquiry</span>
+                  <span x-show="isLoading" class="flex items-center gap-2" style="display: none;">
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-slate-950" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Transmitting...
+                  </span>
+                </button>
+
+                <span class="text-xs font-mono text-slate-400">
+                  Protected with rate-limiting &amp; honeypot
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  </main>
+
+  
+  <footer class="py-12 bg-white dark:bg-[#070b16] border-t border-border-light dark:border-border-dark text-xs font-mono text-slate-500 dark:text-slate-400" role="contentinfo">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-1 text-center sm:text-left">
+        <div>© 2026 Dhika Mahesa Syaputra, S.Kom.. All rights reserved.</div>
+        <div class="text-[11px] text-slate-400 dark:text-slate-500">
+          Zero tracking cookies • Built with HTML5, Tailwind CSS &amp; Alpine.js
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/dhika-mahesa-s" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors flex items-center gap-1.5" title="GitHub">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/dhika-mahesa-syaputra-456748374" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors flex items-center gap-1.5" title="LinkedIn">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="#main-content" class="hover:text-accent transition-colors flex items-center gap-1">
+          <span>Back to top</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
