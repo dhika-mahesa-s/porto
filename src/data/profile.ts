@@ -68,7 +68,7 @@ export const profileData: ProfileData = {
   },
   languages: [
     { language: 'Indonesian', proficiency: 'native' },
-    { language: 'English', proficiency: 'professional / fluent' }
+    { language: 'English', proficiency: 'professional' }
   ],
   openTo: ['Full-time AI engineer roles', 'Research collaboration'],
   hero: {
