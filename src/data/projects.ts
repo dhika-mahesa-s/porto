@@ -118,10 +118,25 @@ export const projectsData: ProjectItem[] = [
     },
     images: [
       {
-        src: '/img/projects/kontrak-aman.svg',
-        alt: 'Kontrak Aman Langflow pipeline and structured legal risk report interface',
+        src: '/img/projects/flow ai agent.png',
+        alt: 'Kontrak Aman Langflow pipeline and architecture diagram showing sequential document ingestion, clause extraction, JSON parsing, risk analysis, and chat output',
         isPlaceholder: true
-      }
+      },
+      {
+        src: '/img/projects/output 1 kontrak aman.jpg',
+        alt: 'Kontrak Aman chat interface showing risk analysis output with 10-category breakdown and UU Ketenagakerjaan citations',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output 2 kontrak aman.jpg',
+        alt: 'Kontrak Aman chat interface showing risk analysis output with plain-language explanations and questions to ask HR',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output 3 kontrak aman.jpg',
+        alt: 'Kontrak Aman chatting section for user to ask questions about specific clauses and receive actionable insights',
+        isPlaceholder: true
+      },
     ],
     details: {
       problemStatement: [
