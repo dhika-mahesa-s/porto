@@ -643,8 +643,8 @@ function renderProjects(): string {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           ${projectsData
             .map((project) => {
-              const githubTodo = renderWithTodo(project.links.github, isDev);
-              const demoTodo = renderWithTodo(project.links.demo, isDev);
+              const githubLink = renderProjectExternalLink(project.links.github, 'GitHub');
+              const demoLink = renderProjectExternalLink(project.links.demo, 'Live Demo');
 
               return `
             <article
@@ -732,9 +732,9 @@ function renderProjects(): string {
                   <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
 
-                <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
-                  ${githubTodo ? `<span>${githubTodo}</span>` : ''}
-                  ${demoTodo ? `<span>${demoTodo}</span>` : ''}
+                <div class="flex flex-wrap justify-end items-center gap-2 text-xs font-mono">
+                  ${githubLink}
+                  ${demoLink}
                 </div>
               </div>
             </article>`;
@@ -1358,8 +1358,8 @@ function generateProjectDetailPages() {
       fs.mkdirSync(projectDir, { recursive: true });
     }
 
-    const githubTodo = renderWithTodo(project.links.github, isDev);
-    const demoTodo = renderWithTodo(project.links.demo, isDev);
+    const githubLink = renderProjectExternalLink(project.links.github, 'GitHub');
+    const demoLink = renderProjectExternalLink(project.links.demo, 'Live Demo');
 
     const html = `<!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
@@ -1588,8 +1588,8 @@ ${renderHead(
               <div class="pt-3 border-t border-border-light dark:border-border-dark">
                 <span class="text-slate-400 font-mono text-xs block mb-1">External Links</span>
                 <div class="space-y-1 font-mono text-xs">
-                  ${githubTodo ? `<div>GitHub: ${githubTodo}</div>` : ''}
-                  ${demoTodo ? `<div>Demo: ${demoTodo}</div>` : ''}
+                  ${githubLink}
+                  ${demoLink}
                 </div>
               </div>
             </div>
@@ -1626,3 +1626,10 @@ ${renderHead(
 
 generateIndexPage();
 generateProjectDetailPages();
+function renderProjectExternalLink(url: string, label: string): string {
+  if (!url) return '';
+  if (isTodoPlaceholder(url)) return renderWithTodo(url, isDev);
+
+  return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-accent/30 bg-accent/10 text-accent hover:bg-accent hover:text-slate-950 transition-colors focus-visible:ring-1 focus-visible:ring-accent" aria-label="Open ${label} for this project in a new tab">${label}<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14"/></svg></a>`;
+}
+

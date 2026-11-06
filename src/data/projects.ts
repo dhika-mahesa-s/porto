@@ -61,8 +61,8 @@ export const projectsData: ProjectItem[] = [
       'Conversation memory integration using MemorySaver for multi-turn claim refinement'
     ],
     links: {
-      github: '[https://github.com/dhika-mahesa-s/CiteCheck-AI]',
-      demo: '[https://citecheck-ai.streamlit.app/]'
+      github: 'https://github.com/dhika-mahesa-s/CiteCheck-AI',
+      demo: 'https://citecheck-ai.streamlit.app/'
     },
     images: [
       {
@@ -113,8 +113,8 @@ export const projectsData: ProjectItem[] = [
       'Delivered a 10-category breakdown with questions to ask HR and UU Ketenagakerjaan citations'
     ],
     links: {
-      github: '[add link]',
-      demo: '[add demo link]'
+      github: 'https://github.com/dhika-mahesa-s/kontrak_aman_space',
+      demo: 'https://kontrakamanspace.streamlit.app/'
     },
     images: [
       {
