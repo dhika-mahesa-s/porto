@@ -61,8 +61,8 @@ export const projectsData: ProjectItem[] = [
       'Conversation memory integration using MemorySaver for multi-turn claim refinement'
     ],
     links: {
-      github: 'https://github.com/dhika-mahesa-s/CiteCheck-AI',
-      demo: 'https://citecheck-ai.streamlit.app/'
+      github: '[https://github.com/dhika-mahesa-s/CiteCheck-AI]',
+      demo: '[https://citecheck-ai.streamlit.app/]'
     },
     images: [
       {
