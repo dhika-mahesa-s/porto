@@ -1,5 +1,11 @@
 export type ProjectCategory = 'LLM and RAG' | 'Computer Vision' | 'Mobile' | 'Data and ML';
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  isPlaceholder?: boolean;
+}
+
 export interface ProjectItem {
   slug: string;
   title: string;
@@ -15,12 +21,8 @@ export interface ProjectItem {
     github: string; // [add link] placeholder
     demo: string; // [add demo link] placeholder
   };
-  imageSlot: {
-    src: string;
-    alt: string;
-    aspectRatio: string;
-    isPlaceholder: boolean;
-  };
+  /** First image is used as card thumbnail. Add more for the detail-page carousel. */
+  images: ProjectImage[];
   details: {
     problemStatement: string[];
     approach: string[];
@@ -62,12 +64,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/citecheck-ai.svg',
-      alt: 'CiteCheck AI LangGraph agentic RAG architecture and citation verification workflow',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/citecheck-ai.svg',
+        alt: 'CiteCheck AI LangGraph agentic RAG architecture and citation verification workflow',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Undergraduate and postgraduate academic writing often includes unsubstantiated assertions or mismatched citations. Verifying whether an empirical claim is truly backed by a cited paper requires hours of manual cross-referencing.',
@@ -113,12 +116,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/kontrak-aman.svg',
-      alt: 'Kontrak Aman Langflow pipeline and structured legal risk report interface',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/kontrak-aman.svg',
+        alt: 'Kontrak Aman Langflow pipeline and structured legal risk report interface',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Entry-level job applicants in Indonesia frequently encounter predatory contract stipulations—such as unlawful wage withholding during probation or unbounded overtime—without access to legal counsel.',
@@ -170,12 +174,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/moon-phase.svg',
-      alt: 'Moon-phase classification Android application interface and inference benchmark',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/moon-phase.svg',
+        alt: 'Moon-phase classification Android application interface and inference benchmark',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Lunar cycles dictate ocean tidal movements and fish feeding behaviors. Coastal fishermen in Indonesia traditionally rely on intuition, which is vulnerable to unpredictable weather patterns.',
@@ -226,12 +231,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/ganoderma-yolov8.svg',
-      alt: 'YOLOv8 bounding box detection of Ganoderma disease in oil palm plantation imagery',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/ganoderma-yolov8.svg',
+        alt: 'YOLOv8 bounding box detection of Ganoderma disease in oil palm plantation imagery',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Ganoderma boninense is the most destructive fungal pathogen threatening Southeast Asian oil palm agriculture, leading to structural tree failure and massive crop loss.',
@@ -282,12 +288,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/nir-prediction.svg',
-      alt: 'NIR spectral absorbance curve analysis and MLP regression prediction plot',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/nir-prediction.svg',
+        alt: 'NIR spectral absorbance curve analysis and MLP regression prediction plot',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'In palm oil milling, high Free Fatty Acid (FFA) content lowers crude palm oil market grading. Conventional chemical analysis destroys samples and delays processing plant feedback by hours.',
@@ -336,12 +343,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/ripeness-xgboost.svg',
-      alt: 'XGBoost feature separation between ripe and unripe oil palm fruit physicochemical markers',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/ripeness-xgboost.svg',
+        alt: 'XGBoost feature separation between ripe and unripe oil palm fruit physicochemical markers',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Under-ripe palm fruits yield less oil and high FFA, causing financial penalties for farmers. Visual assessment by plantation workers is subjective and error-prone.',
@@ -386,12 +394,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/government-dashboard.svg',
-      alt: 'West Sumatra provincial government dashboard with geospatial regional performance index',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/government-dashboard.svg',
+        alt: 'West Sumatra provincial government dashboard with geospatial regional performance index',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Provincial leadership in West Sumatra required rapid visibility into socio-economic indicators across 19 administrative regencies and cities.',
@@ -434,12 +443,13 @@ export const projectsData: ProjectItem[] = [
       github: '[add link]',
       demo: '[add demo link]'
     },
-    imageSlot: {
-      src: '/img/projects/saturute.svg',
-      alt: 'SatuRute community ride-sharing corridor analysis and demographic distribution map',
-      aspectRatio: '16/9',
-      isPlaceholder: true
-    },
+    images: [
+      {
+        src: '/img/projects/saturute.svg',
+        alt: 'SatuRute community ride-sharing corridor analysis and demographic distribution map',
+        isPlaceholder: true
+      }
+    ],
     details: {
       problemStatement: [
         'Urban transportation in Pekanbaru relies heavily on single-occupancy two-wheelers, creating severe peak-hour bottlenecks around university and commercial hubs.',
