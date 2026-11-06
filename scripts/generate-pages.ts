@@ -661,21 +661,20 @@ function renderProjects(): string {
                     src="${project.images[0].src}"
                     alt="${project.images[0].alt}"
                     loading="lazy"
+                    onerror="this.hidden=true"
                     class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
                   />
-                  <!-- Category Overlay Badge -->
-                  <div class="absolute top-3 left-3">
-                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-950/80 backdrop-blur-md text-accent border border-accent/30">
-                      ${project.category}
-                    </span>
-                  </div>
                   ${project.images.length > 1 ? `<div class="absolute top-3 right-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-mono bg-slate-950/80 backdrop-blur-md text-slate-300 border border-slate-700/50"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>${project.images.length} photos</span></div>` : ''}
                 </div>
 
                 <!-- Card Content -->
                 <div class="p-6 space-y-4">
+                  <span class="inline-flex max-w-full items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-accent/10 text-accent border border-accent/30 break-words">
+                    ${project.category}
+                  </span>
+
                   <!-- Program / Context -->
-                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400">
+                  <div class="text-xs font-mono text-slate-500 dark:text-slate-400 break-words">
                     ${project.programOrContext}
                   </div>
 
