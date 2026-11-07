@@ -74,7 +74,7 @@ export const profileData: ProfileData = {
   hero: {
     headline: 'I build LLM and computer-vision systems that ship.',
     subheadline:
-      'AI Engineer and Computer Science graduate focused on agentic RAG, computer vision, and AI for public-sector and agriculture data.',
+      'AI Engineer and Computer Science graduate building and deploying LLM, agentic RAG, and computer vision systems that cut manual work and turn complex data into measurable results.',
     stats: [
       {
         value: 99.4,

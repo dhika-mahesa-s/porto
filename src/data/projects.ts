@@ -66,7 +66,22 @@ export const projectsData: ProjectItem[] = [
     },
     images: [
       {
-        src: '/img/projects/citecheck-ai.svg',
+        src: '/img/projects/homepage-citecheck.png',
+        alt: 'CiteCheck AI homepage and the model output if the claim is contradicted by the source',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output2-citecheck.png',
+        alt: 'CiteCheck AI model output if the claim is supported by the source',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output3-citecheck.png',
+        alt: 'CiteCheck AI model output if the source is not found in the internal database',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/citecheck-rag-card.png',
         alt: 'CiteCheck AI LangGraph agentic RAG architecture and citation verification workflow',
         isPlaceholder: true
       }
@@ -118,25 +133,30 @@ export const projectsData: ProjectItem[] = [
     },
     images: [
       {
-        src: '/img/projects/flow ai agent.png',
-        alt: 'Kontrak Aman Langflow pipeline and architecture diagram showing sequential document ingestion, clause extraction, JSON parsing, risk analysis, and chat output',
+        src: '/img/projects/home-page-kontrak-aman.jpg',
+        alt: 'Kontrak Aman Home page showing file upload, clause extraction, and risk analysis chat interface',
         isPlaceholder: true
       },
       {
-        src: '/img/projects/output 1 kontrak aman.jpg',
+        src: '/img/projects/kontrak-aman-output-1.jpg',
         alt: 'Kontrak Aman chat interface showing risk analysis output with 10-category breakdown and UU Ketenagakerjaan citations',
         isPlaceholder: true
       },
       {
-        src: '/img/projects/output 2 kontrak aman.jpg',
+        src: '/img/projects/kontrak-aman-output-2.jpg',
         alt: 'Kontrak Aman chat interface showing risk analysis output with plain-language explanations and questions to ask HR',
         isPlaceholder: true
       },
       {
-        src: '/img/projects/output 3 kontrak aman.jpg',
+        src: '/img/projects/kontrak-aman-output-3.png',
         alt: 'Kontrak Aman chatting section for user to ask questions about specific clauses and receive actionable insights',
         isPlaceholder: true
       },
+      {
+        src: '/img/projects/kontrak-aman-flow-agent.png',
+        alt: 'Kontrak Aman Langflow pipeline and architecture diagram showing sequential document ingestion, clause extraction, JSON parsing, risk analysis, and chat output',
+        isPlaceholder: true
+      }
     ],
     details: {
       problemStatement: [
@@ -186,13 +206,33 @@ export const projectsData: ProjectItem[] = [
       'Manuscript under review at Indonesian Journal of Electrical Engineering and Informatics (IJEEI, Scopus-indexed Q3)'
     ],
     links: {
-      github: '[add link]',
-      demo: '[add demo link]'
+      github: 'https://github.com/dhika-mahesa-s/mobilenetv2based-moon-phase-classification',
+      demo: 'https://drive.google.com/file/d/15wVFrSDzyT459OIxkHajjf1SASpUkjxM/view?usp=sharing'
     },
     images: [
       {
-        src: '/img/projects/moon-phase.svg',
-        alt: 'Moon-phase classification Android application interface and inference benchmark',
+        src: '/img/projects/homepage-lunalaut.jpg',
+        alt: 'Fishing Recommendation Application "LunaLaut" homepage',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output2-lunalaut.jpg',
+        alt: 'Fishing recommendation output if the ocean condition is dangerous eventhough the moon phase is really favorable',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output1-lunalaut.jpg',
+        alt: 'Fishing recommendation output if both the ocean condition and the moon phase are favorable',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/output3-lunalaut.jpg',
+        alt: 'Fishing recommendation output if the ocean condition is really safe but the moon phase is not favorable',
+        isPlaceholder: true
+      },
+      {
+        src: '/img/projects/flow-lunalaut.svg',
+        alt: 'Fishing Recommendation Application "LunaLaut" workflow',
         isPlaceholder: true
       }
     ],

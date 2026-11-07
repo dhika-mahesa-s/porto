@@ -645,6 +645,7 @@ function renderProjects(): string {
             .map((project) => {
               const githubLink = renderProjectExternalLink(project.links.github, 'GitHub');
               const demoLink = renderProjectExternalLink(project.links.demo, 'Live Demo');
+              const carouselImages = serializeForHtmlAttribute(project.images);
 
               return `
             <article
@@ -655,16 +656,40 @@ function renderProjects(): string {
               class="tech-card overflow-hidden flex flex-col justify-between group"
             >
               <div>
-                <!-- Card Thumbnail (first image) -->
-                <div class="relative w-full aspect-[16/9] bg-slate-900 border-b border-border-light dark:border-border-dark overflow-hidden">
-                  <img
-                    src="${project.images[0].src}"
-                    alt="${project.images[0].alt}"
-                    loading="lazy"
-                    onerror="this.hidden=true"
-                    class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
-                  />
-                  ${project.images.length > 1 ? `<div class="absolute top-3 right-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-mono bg-slate-950/80 backdrop-blur-md text-slate-300 border border-slate-700/50"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>${project.images.length} photos</span></div>` : ''}
+                <!-- Card Image Carousel -->
+                <div
+                  class="border-b border-border-light dark:border-border-dark"
+                  x-data="{
+                    activeSlide: 0,
+                    images: ${carouselImages},
+                    get total() { return this.images.length; },
+                    prev() { this.activeSlide = (this.activeSlide - 1 + this.total) % this.total; },
+                    next() { this.activeSlide = (this.activeSlide + 1) % this.total; }
+                  }"
+                >
+                  <div class="relative w-full aspect-[16/9] bg-slate-900 overflow-hidden select-none">
+                    <template x-for="(img, idx) in images" :key="idx">
+                      <div x-show="activeSlide === idx" class="absolute inset-0">
+                        <img :src="img.src" :alt="img.alt" loading="lazy" class="w-full h-full object-contain" />
+                      </div>
+                    </template>
+                  </div>
+                  <template x-if="total > 1">
+                    <div class="flex items-center justify-between gap-3 px-3 py-2 bg-slate-900/50 border-t border-slate-800">
+                      <button @click="prev()" class="inline-flex items-center justify-center w-8 h-8 rounded-md text-slate-300 border border-slate-700 hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Previous project image">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                      </button>
+                      <div class="flex items-center gap-2">
+                        <template x-for="(img, idx) in images" :key="idx">
+                          <button @click="activeSlide = idx" :class="activeSlide === idx ? 'bg-accent w-5' : 'bg-slate-600 hover:bg-slate-400 w-2'" class="h-2 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" :aria-label="'Show image ' + (idx + 1)"></button>
+                        </template>
+                        <span class="ml-1 text-xs font-mono text-slate-400" x-text="(activeSlide + 1) + '/' + total"></span>
+                      </div>
+                      <button @click="next()" class="inline-flex items-center justify-center w-8 h-8 rounded-md text-slate-300 border border-slate-700 hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Next project image">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                      </button>
+                    </div>
+                  </template>
                 </div>
 
                 <!-- Card Content -->
@@ -1360,6 +1385,7 @@ function generateProjectDetailPages() {
 
     const githubLink = renderProjectExternalLink(project.links.github, 'GitHub');
     const demoLink = renderProjectExternalLink(project.links.demo, 'Live Demo');
+    const carouselImages = serializeForHtmlAttribute(project.images);
 
     const html = `<!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
@@ -1429,7 +1455,7 @@ ${renderHead(
         class="tech-card overflow-hidden"
         x-data="{
           activeSlide: 0,
-          images: ${JSON.stringify(project.images)},
+          images: ${carouselImages},
           get total() { return this.images.length; },
           prev() { this.activeSlide = (this.activeSlide - 1 + this.total) % this.total; },
           next() { this.activeSlide = (this.activeSlide + 1) % this.total; }
@@ -1451,51 +1477,29 @@ ${renderHead(
               <img
                 :src="img.src"
                 :alt="img.alt"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-contain"
                 loading="lazy"
               />
             </div>
           </template>
 
-          <!-- Prev / Next arrows (only shown if >1 image) -->
-          <template x-if="total > 1">
-            <div>
-              <button
-                @click="prev()"
-                class="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-slate-950/70 backdrop-blur-sm text-white border border-slate-700/50 hover:bg-slate-800/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                aria-label="Previous image"
-              >
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-              </button>
-              <button
-                @click="next()"
-                class="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-slate-950/70 backdrop-blur-sm text-white border border-slate-700/50 hover:bg-slate-800/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                aria-label="Next image"
-              >
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </template>
-
-          <!-- Slide counter badge -->
-          <template x-if="total > 1">
-            <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950/70 backdrop-blur-sm text-slate-300 border border-slate-700/50">
-              <span x-text="activeSlide + 1"></span>/<span x-text="total"></span>
-            </div>
-          </template>
         </div>
 
-        <!-- Dot indicators (only shown if >1 image) -->
+        <!-- Carousel controls are outside the image so screenshots remain unobscured. -->
         <template x-if="total > 1">
-          <div class="flex items-center justify-center gap-2 py-3 bg-slate-900/50 border-t border-slate-800">
-            <template x-for="(img, idx) in images" :key="idx">
-              <button
-                @click="activeSlide = idx"
-                :class="activeSlide === idx ? 'bg-accent w-5' : 'bg-slate-600 hover:bg-slate-400 w-2'"
-                class="h-2 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                :aria-label="'Go to image ' + (idx + 1)"
-              ></button>
-            </template>
+          <div class="flex items-center justify-between gap-4 px-4 py-3 bg-slate-900/50 border-t border-slate-800">
+            <button @click="prev()" class="inline-flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-700 hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Previous image">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="flex items-center gap-2">
+              <template x-for="(img, idx) in images" :key="idx">
+                <button @click="activeSlide = idx" :class="activeSlide === idx ? 'bg-accent w-5' : 'bg-slate-600 hover:bg-slate-400 w-2'" class="h-2 rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" :aria-label="'Go to image ' + (idx + 1)"></button>
+              </template>
+              <span class="ml-1 text-xs font-mono text-slate-400" x-text="(activeSlide + 1) + '/' + total"></span>
+            </div>
+            <button @click="next()" class="inline-flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-700 hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Next image">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
         </template>
 
@@ -1631,5 +1635,12 @@ function renderProjectExternalLink(url: string, label: string): string {
   if (isTodoPlaceholder(url)) return renderWithTodo(url, isDev);
 
   return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-accent/30 bg-accent/10 text-accent hover:bg-accent hover:text-slate-950 transition-colors focus-visible:ring-1 focus-visible:ring-accent" aria-label="Open ${label} for this project in a new tab">${label}<svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14"/></svg></a>`;
+}
+
+function serializeForHtmlAttribute(value: unknown): string {
+  return JSON.stringify(value)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;');
 }
 
